@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Atelier — Research Study</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf9f7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 48px 40px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    .logo {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: normal;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #c9b99a;
+      margin: 24px auto;
+    }
+    p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .info-box {
+      background: #f8f6f3;
+      border-left: 3px solid #c9b99a;
+      padding: 16px 20px;
+      margin: 24px 0;
+      text-align: left;
+      border-radius: 0 8px 8px 0;
+    }
+    .info-box p {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #444;
+    }
+    .info-box p:last-child { margin-bottom: 0; }
+    .btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 4px;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      margin-top: 24px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #333; }
+    .loading {
+      display: none;
+      margin-top: 24px;
+      color: #999;
+      font-size: 14px;
+    }
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ddd;
+      border-top-color: #c9b99a;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: #bbb;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">Wittenborg University of Applied Sciences</div>
+  <h1>Online Shopping Content Perceptions</h1>
+  <div class="divider"></div>
+  <p>
+    Welcome! My name is <strong>Minoo Iravani</strong>, a master's student at Wittenborg University of Applied Sciences. This survey is part of my thesis research on how consumers perceive online shopping content on Instagram.
+  </p>
+  <div class="info-box">
+    <p>⏱ Takes approximately <strong>5 minutes</strong></p>
+    <p>🔒 All responses are <strong>completely anonymous</strong></p>
+    <p>📋 No personal data will be shared with third parties</p>
+    <p>🇪🇺 Data stored in accordance with <strong>GDPR regulations</strong></p>
+  </div>
+  <p>Participation is completely voluntary. You may withdraw at any time without consequence.</p>
+  <p style="font-size: 13px; color: #888; margin-top: 8px;">
+    By clicking "Start Survey" you confirm that you are <strong>female</strong>, aged <strong>25–44</strong>, and use <strong>Instagram at least weekly</strong>.
+  </p>
+  <button class="btn" onclick="startSurvey()">Start Survey</button>
+  <div class="loading" id="loading">
+    <span class="spinner"></span> Preparing your survey...
+  </div>
+  <div class="footer">
+    This study has been conducted in accordance with the ethical guidelines of<br>
+    Wittenborg University of Applied Sciences.
+  </div>
+</div>
+
+<script>
+  const conditions = [
+    // SIMPLE RING
+    { id: "S-A1", label: "Simple | No Disclosure | Low",     url: "https://docs.google.com/forms/d/e/1FAIpQLSehwa57jBss3VnJz6SvJ7hDnoufNmhizXW2ux-ht6pYjUOzFA/viewform?usp=header" },
+    { id: "S-B1", label: "Simple | Banner | Low",            url: "https://docs.google.com/forms/d/e/1FAIpQLSfulkinE8VObIIJicLcM0xt85ZvBuK-bEfA24EvPj4Nn-lTjQ/viewform?usp=header" },
+    { id: "S-C1", label: "Simple | Hashtag | Low",           url: "https://docs.google.com/forms/d/e/1FAIpQLSfHQn4lAf_CoQTcQbPx9DRVE7WvBFxWELrxtjkzWphhaFIDTw/viewform?usp=header" },
+    { id: "S-C2", label: "Simple | Hashtag | Medium",        url: "https://docs.google.com/forms/d/e/1FAIpQLScJ5m_tTUTwp5kZ2TMUN0lhJzs-klecH0urgpkmBvw5r24p4g/viewform?usp=header" },
+    { id: "S-B2", label: "Simple | Banner | Medium",         url: "https://docs.google.com/forms/d/e/1FAIpQLSeGigA_aMbMBvWsvJ0whOPz1BYpJuTwtbmKNymipqZ0Mt-Xgg/viewform?usp=header" },
+    { id: "S-A2", label: "Simple | No Disclosure | Medium",  url: "https://docs.google.com/forms/d/e/1FAIpQLSfth6WaSZhK99BwOJis9sc68LCBMtVBogHt3JZK9u-zllIj2Q/viewform?usp=header" },
+    { id: "S-A3", label: "Simple | No Disclosure | High",    url: "https://docs.google.com/forms/d/e/1FAIpQLSeV3DSswLHlbZ9N4aQ9MTSPbUmFpYBeTV0KXiBd3X4oVtCtDQ/viewform?usp=header" },
+    { id: "S-C3", label: "Simple | Hashtag | High",          url: "https://docs.google.com/forms/d/e/1FAIpQLSe2nhQ-DphNkZWLEvAxHbkEcdv0ab2uTPYNrJDGZlfGZP0GhA/viewform?usp=header" },
+    { id: "S-B3", label: "Simple | Banner | High",           url: "https://docs.google.com/forms/d/e/1FAIpQLSfsv4kYPuquUu377awOwjWmlTzsb8O1IwMz6zO5xaJSW7PwcA/viewform?usp=header" },
+
+    // COMPLEX RING
+    { id: "C-A1", label: "Complex | No Disclosure | Low",    url: "https://docs.google.com/forms/d/e/1FAIpQLScDgCDNyy6ag3o2ZMhEx3VuKPwHsD5DsfZaFmkGwppbAgAuZQ/viewform?usp=header" },
+    { id: "C-B1", label: "Complex | Banner | Low",           url: "https://docs.google.com/forms/d/e/1FAIpQLSeyV7R9Y2_tzEYVR6fc1l-CRp4mMyS4thJ1asoLYotvZ28NSQ/viewform?usp=header" },
+    { id: "C-C1", label: "Complex | Hashtag | Low",          url: "https://docs.google.com/forms/d/e/1FAIpQLSdz7t5kZMFdC9b36FvPyozHP0s8N1AdOqbd-TTTlpiCOiMCcA/viewform?usp=header" },
+    { id: "C-C2", label: "Complex | Hashtag | Medium",       url: "https://docs.google.com/forms/d/e/1FAIpQLScqaTGqg14Fmr7GHW0Kyrs3LeCZg3-U9He6Y8KxCCHBFosTGA/viewform?usp=header" },
+    { id: "C-B2", label: "Complex | Banner | Medium",        url: "https://docs.google.com/forms/d/e/1FAIpQLSd2ZocII9sBN4LOrVLRtBDteoWMuoOrpN4vofom43yjtVSr0g/viewform?usp=header" },
+    { id: "C-A2", label: "Complex | No Disclosure | Medium", url: "https://docs.google.com/forms/d/e/1FAIpQLSfxNqGfRPjdEOeZoyZJj9pbyvYLcW9N-RusFRkM6zK_tZAdIw/viewform?usp=header" },
+    { id: "C-A3", label: "Complex | No Disclosure | High",   url: "https://docs.google.com/forms/d/e/1FAIpQLSeg3JxUipA6_cp06VpEz6PdGARQF3tqGWJWRN_vib7gSiEABg/viewform?usp=header" },
+    { id: "C-C3", label: "Complex | Hashtag | High",         url: "https://docs.google.com/forms/d/e/1FAIpQLSeQ099_fW4Fzsrwh1QM7h9312KeMWtp23Num9C51H5ZC81XNA/viewform?usp=header" },
+    { id: "C-B3", label: "Complex | Banner | High",          url: "https://docs.google.com/forms/d/e/1FAIpQLSegKBBsfT7eshgsnwR685todMKHz4RH2PvIM1BTzhxyYPNnTg/viewform?usp=header" },
+  ];
+
+  function startSurvey() {
+    document.querySelector('.btn').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    const random = Math.floor(Math.random() * conditions.length);
+    const selected = conditions[random];
+    setTimeout(() => {
+      window.location.href = selected.url;
+    }, 1200);
+  }
+</script>
+</body>
+</html>
